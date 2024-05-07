@@ -6,7 +6,7 @@ const StarredPage = React.lazy(() => import('./Pages/StarredPage'));
 
 const App: React.FC = () => {
   return (
-    <section className="section">
+    <section className="section main-container">
       <div className="container">
         <NavigationBar />
         <div className="columns">

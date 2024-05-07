@@ -1,0 +1,32 @@
+.navigator {
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.navigatorItem {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 19px;
+  margin: 0 10px;
+  padding: 0;
+  color: var(--main-text-light-color);
+}
+
+.separator {
+  color: var(--main-text-light-color);
+}
+
+.active {
+  color: var(--main-brand-color);
+}
+
+.logo {
+  height: auto;
+  width: auto;
+}

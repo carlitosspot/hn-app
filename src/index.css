@@ -1,1 +1,11 @@
 @import 'bulma/css/bulma.min.css';
+:root {
+  --main-brand-color: #fe7139;
+  --main-text-light-color: #000000;
+}
+
+.main-container {
+  border-top: var(--main-brand-color);
+  border-top-style: solid;
+  border-top-width: 4px;
+}
