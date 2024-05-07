@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store.ts';
 import { toggleStar } from '../../features/starredSlice.ts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as outlinedStar } from '@fortawesome/free-regular-svg-icons';
 import { formatDistanceToNow } from 'date-fns';
 import styles from './newsitem.module.css';
 
@@ -16,6 +17,8 @@ export interface NewsItemProps {
   score: number;
   descendants: number;
 }
+
+const mainBrandColor = '#FE7139';
 
 const Index: React.FC<NewsItemProps> = ({
   id,
@@ -31,6 +34,7 @@ const Index: React.FC<NewsItemProps> = ({
     (state: RootState) => state.starred.starredItems,
   );
   const isStarred = starredItems.includes(id);
+  const starIcon = isStarred ? solidStar : outlinedStar;
   const buttonLabel = isStarred ? 'Saved' : 'Save';
   const itemSource = URL.canParse(url) ? new URL(url) : null;
   const itemUrl = itemSource ? itemSource.origin : '';
@@ -65,8 +69,8 @@ const Index: React.FC<NewsItemProps> = ({
             className={styles.starButton}
           >
             <FontAwesomeIcon
-              icon={faStar}
-              color={isStarred ? '#FE7139' : 'grey'}
+              icon={starIcon}
+              color={isStarred ? mainBrandColor : ''}
               size="sm"
               className={styles.starIcon}
             />
