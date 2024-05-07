@@ -1,4 +1,4 @@
-const BASE_URL = 'https://hacker-news.firebaseio.com/v0';
+const BASE_URL = import.meta.env.VITE_HN_BASE_API;
 
 export const fetchTopStories = async () => {
   const response = await fetch(`${BASE_URL}/topstories.json`);
