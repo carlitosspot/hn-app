@@ -2,6 +2,7 @@
 :root {
   --main-brand-color: #fe7139;
   --main-text-light-color: #000000;
+  --secondary-text-light-color: #00000080;
 }
 
 .main-container {

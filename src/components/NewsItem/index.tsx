@@ -16,6 +16,7 @@ export interface NewsItemProps {
   time: number;
   score: number;
   descendants: number;
+  index?: number;
 }
 
 const mainBrandColor = '#FE7139';
@@ -28,6 +29,7 @@ const Index: React.FC<NewsItemProps> = ({
   time,
   score,
   descendants,
+  index = 0,
 }) => {
   const dispatch = useDispatch();
   const starredItems = useSelector(
@@ -45,37 +47,37 @@ const Index: React.FC<NewsItemProps> = ({
 
   return (
     <div className={`box ${styles.container}`}>
-      <div>
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.title}
-        >
-          {title}
-        </a>
-        {itemUrl && <span className={styles.itemUrl}>({itemUrl})</span>}
-        <div className={styles.metadata}>
-          <span>
+      <div className={styles.content}>
+        <span className={styles.itemNumber}>{index + 1}. </span>
+        <div className={styles.textContainer}>
+          <div>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.title}
+            >
+              {title}
+            </a>
+            {itemUrl && <span className={styles.itemUrl}>({itemUrl})</span>}
+          </div>
+          <div className={styles.metadata}>
             {score} points by {by} {formatDistanceToNow(new Date(time * 1000))}
-            ago
-          </span>
-          <span>|</span>
-          <span>{descendants} comments</span>
-          <span>|</span>
-          <button
-            aria-label={isStarred ? 'Unsave this item' : 'Save this item'}
-            onClick={handleStarClick}
-            className={styles.starButton}
-          >
-            <FontAwesomeIcon
-              icon={starIcon}
-              color={isStarred ? mainBrandColor : ''}
-              size="sm"
-              className={styles.starIcon}
-            />
-            {buttonLabel}
-          </button>
+            ago | {descendants} comments
+            <button
+              aria-label={isStarred ? 'Unsave this item' : 'Save this item'}
+              onClick={handleStarClick}
+              className={styles.starButton}
+            >
+              <FontAwesomeIcon
+                icon={starIcon}
+                color={isStarred ? mainBrandColor : ''}
+                size="sm"
+                className={styles.starIcon}
+              />
+              {buttonLabel}
+            </button>
+          </div>
         </div>
       </div>
     </div>

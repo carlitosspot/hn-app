@@ -19,8 +19,8 @@ const HomePage: React.FC = () => {
 
   return (
     <div>
-      {newsItems.map(story => (
-        <Index key={story.id} {...story} />
+      {newsItems.map((story, index) => (
+        <Index key={story.id} {...story} index={index} />
       ))}
     </div>
   );
