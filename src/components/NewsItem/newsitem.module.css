@@ -1,0 +1,42 @@
+.container {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: none;
+  border: none;
+  margin: 0;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.metadata {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.6);
+
+  span {
+    margin-right: 5px;
+  }
+}
+
+.starButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.starIcon {
+  margin-right: 5px;
+}
+
+.itemUrl {
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin-left: 10px;
+}

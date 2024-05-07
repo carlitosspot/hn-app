@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-
+import starredReducer from './features/starredSlice';
 export const store = configureStore({
   reducer: {
-    // Add your reducers here
+    starred: starredReducer,
   },
 });
 
