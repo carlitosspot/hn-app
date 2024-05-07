@@ -1,0 +1,43 @@
+.footer {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.separator {
+  border-top: 2px solid var(--main-brand-color);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.link {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  color: var(--main-text-light-color);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.appName {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  text-align: left;
+  color: var(--main-text-light-color);
+  margin-bottom: 10px;
+}

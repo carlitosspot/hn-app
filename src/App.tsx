@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar/NavigationBar.tsx';
+import Footer from './components/Footer';
 const HomePage = React.lazy(() => import('./Pages/HomePage'));
 const StarredPage = React.lazy(() => import('./Pages/StarredPage'));
 
@@ -31,6 +32,7 @@ const App: React.FC = () => {
             </Routes>
           </div>
         </div>
+        <Footer />
       </div>
     </section>
   );
