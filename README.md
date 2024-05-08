@@ -5,7 +5,7 @@ HN app 2.0. To get the app up and running, follow the steps below
 ## Requirements
 This app is bootstrapped with Vite and TypeScript
 * Node 20+
-* create an `.env` using `.env.sample` as a reference
+* create an `.env` file using `.env.sample` as a reference (Save `.env.sample` as `.env`)
 
 ## setup
 * `npm run i`
