@@ -38,6 +38,8 @@
 }
 
 .metadata {
+  display: flex;
+  gap: 5px;
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
@@ -54,17 +56,6 @@
   color: var(--secondary-text-light-color);
 }
 
-.starButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.starIcon {
-  margin-right: 5px;
-}
-
 .itemUrl {
   font-size: 12px;
   font-weight: 400;
@@ -72,4 +63,13 @@
   text-align: left;
   color: var(--secondary-text-light-color);
   margin-left: 10px;
+}
+
+.comments {
+  cursor: pointer;
+  color: var(--secondary-text-light-color);
+}
+
+.comments:hover {
+  text-decoration: underline;
 }

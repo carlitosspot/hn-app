@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store.ts';
-import { fetchStory } from '../api/hnApi.ts';
-import NewsItem, { NewsItemProps } from '../components/NewsItem';
+import { fetchStory, IStory } from '../api/hnApi.ts';
+import NewsItem from '../components/NewsItem';
 import Skeleton from 'react-loading-skeleton';
 import EmptyList from '../components/EmptyList';
 
 const StarredPage: React.FC = () => {
-  const [newsItems, setNewsItems] = useState<NewsItemProps[]>([]);
+  const [newsItems, setNewsItems] = useState<IStory[]>([]);
   const starredItems = useSelector(
     (state: RootState) => state.starred.starredItems,
   );
@@ -17,7 +17,7 @@ const StarredPage: React.FC = () => {
 
   useEffect(() => {
     async function loadData() {
-      const stories: NewsItemProps[] = await Promise.all(
+      const stories: IStory[] = await Promise.all(
         starredItems.map(id => fetchStory(id)),
       );
       setNewsItems(stories);

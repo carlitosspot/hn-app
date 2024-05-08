@@ -1,27 +1,11 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store.ts';
-import { toggleStar } from '../../features/starredSlice.ts';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
-import { faStar as outlinedStar } from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
 import styles from './newsitem.module.css';
+import { IStory } from '../../api/hnApi.ts';
+import StarToggle from '../StarToggle';
 
-export interface NewsItemProps {
-  id: number;
-  title: string;
-  url: string;
-  by: string;
-  time: number;
-  score: number;
-  descendants: number;
-  index?: number;
-}
-
-const mainBrandColor = '#FE7139';
-
-const Index: React.FC<NewsItemProps> = ({
+const Index: React.FC<IStory> = ({
   id,
   title,
   url,
@@ -31,19 +15,8 @@ const Index: React.FC<NewsItemProps> = ({
   descendants,
   index = 0,
 }) => {
-  const dispatch = useDispatch();
-  const starredItems = useSelector(
-    (state: RootState) => state.starred.starredItems,
-  );
-  const isStarred = starredItems.includes(id);
-  const starIcon = isStarred ? solidStar : outlinedStar;
-  const buttonLabel = isStarred ? 'Saved' : 'Save';
   const itemSource = URL.canParse(url) ? new URL(url) : null;
   const itemUrl = itemSource ? itemSource.origin : '';
-
-  const handleStarClick = () => {
-    dispatch(toggleStar(id));
-  };
 
   return (
     <div className={`box ${styles.container}`}>
@@ -62,21 +35,16 @@ const Index: React.FC<NewsItemProps> = ({
             {itemUrl && <span className={styles.itemUrl}>({itemUrl})</span>}
           </div>
           <div className={styles.metadata}>
-            {score} points by {by} {formatDistanceToNow(new Date(time * 1000))}
-            ago | {descendants} comments
-            <button
-              aria-label={isStarred ? 'Unsave this item' : 'Save this item'}
-              onClick={handleStarClick}
-              className={styles.starButton}
-            >
-              <FontAwesomeIcon
-                icon={starIcon}
-                color={isStarred ? mainBrandColor : ''}
-                size="sm"
-                className={styles.starIcon}
-              />
-              {buttonLabel}
-            </button>
+            <span>
+              {score} points by {by}
+              {formatDistanceToNow(new Date(time * 1000))} ago
+            </span>
+            <span>|</span>
+            <Link to={`/details/${id}`}>
+              <span className={styles.comments}>{descendants} comments</span>
+            </Link>
+            <span>|</span>
+            <StarToggle id={id} />
           </div>
         </div>
       </div>

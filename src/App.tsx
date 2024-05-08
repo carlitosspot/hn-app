@@ -4,6 +4,7 @@ import NavigationBar from './components/NavigationBar/NavigationBar.tsx';
 import Footer from './components/Footer';
 import HomePage from './Pages/HomePage';
 import StarredPage from './Pages/StarredPage';
+import DetailPage from './Pages/DetailPage.tsx';
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/starred" element={<StarredPage />} />
+              <Route path="/details/:id" element={<DetailPage />} />
             </Routes>
           </div>
         </div>
