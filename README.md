@@ -1,6 +1,6 @@
 # Hacker News (HN) app
 
-HN app 2.0. To get the app up and running, follow the following steps below
+HN app 2.0. To get the app up and running, follow the steps below
 
 ## Requirements
 This app is bootstrapped with Vite and TypeScript
@@ -17,3 +17,4 @@ This app is bootstrapped with Vite and TypeScript
 - [ ] Enhance Layout in smaller screen
 - [ ] Add Test coverage
 - [ ] Implement dark mode
+- [ ] Load test the app with large data sets to determine if virtualization is needed
