@@ -23,14 +23,23 @@ const initialState: NewsItems = {
 
 export const fetchNewsItems = createAsyncThunk(
   'newsItems/fetchNewsItems',
-  async (_, { getState }) => {
+  async (
+    { pageNumber, pageSize }: { pageNumber: number; pageSize: number },
+    { getState },
+  ) => {
     const state = getState() as RootState;
-    if (state.newsItems.items.length > 0) {
+    const startIdx = pageNumber * pageSize;
+    if (state.newsItems.items.length > startIdx) {
       return state.newsItems.items; // Return existing items if already loaded
     }
+    const currentStories = [...state.newsItems.items];
+
+    // fetch next pageSize stories
     const ids = await fetchTopStories();
-    const topTenIds = ids.slice(0, 20);
-    return await Promise.all(topTenIds.map(id => fetchStory(id)));
+    const storyIds = ids.slice(startIdx, startIdx + pageSize);
+    const newStories = await Promise.all(storyIds.map(id => fetchStory(id)));
+
+    return currentStories.concat(newStories);
   },
 );
 

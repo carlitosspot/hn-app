@@ -1,0 +1,6 @@
+.showMore {
+  background-color: var(--main-brand-color);
+  color: white;
+  border: none;
+  box-shadow: var(--secondary-text-light-color);
+}
