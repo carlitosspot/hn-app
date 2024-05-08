@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTopStories, fetchStory } from '../api/hnApi.ts';
-import Index, { NewsItemProps } from '../components/NewsItem';
+import NewsItem, { NewsItemProps } from '../components/NewsItem';
+import Skeleton from 'react-loading-skeleton';
 
 const HomePage: React.FC = () => {
   const [newsItems, setNewsItems] = useState<NewsItemProps[]>([]);
@@ -20,8 +21,9 @@ const HomePage: React.FC = () => {
   return (
     <div>
       {newsItems.map((story, index) => (
-        <Index key={story.id} {...story} index={index} />
+        <NewsItem key={story.id} {...story} index={index} />
       ))}
+      {!newsItems.length && <Skeleton count={20} height={60} />}
     </div>
   );
 };
