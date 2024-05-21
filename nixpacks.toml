@@ -1,0 +1,6 @@
+[build]
+command = "npm run build"
+target = "dist"
+
+[deploy]
+command = "docker build -t my-app ."
